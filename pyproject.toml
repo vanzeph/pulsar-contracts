@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pulsar-contracts"
+version = "0.1.0"
+description = "Pulsar public contract library: MarketDataPort / ExecutionPort protocols and immutable domain objects."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "vanzeph" }]
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.5,<3",
+    "pandas>=2.0",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "mypy>=1.8",
+    "pandas-stubs>=2",
+]
+
+[project.urls]
+Repository = "https://github.com/vanzeph/pulsar-contracts"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pulsar_contracts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+plugins = ["pydantic.mypy"]
+files = ["src"]
