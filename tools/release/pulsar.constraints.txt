@@ -1,0 +1,19 @@
+# Pulsar family version pins (release lockfile input).
+#
+# Every Pulsar package is pinned to an anchored, public HTTPS git reference
+# (commit hash until repositories cut vX.Y.Z tags). Install with:
+#     pip install -r pulsar.constraints.txt          # the six packages
+#     pip install -c pulsar.constraints.txt -e ...    # editable workspace
+# See README.md in this directory for conventions and re-locking.
+
+# NOTE: contracts is pinned at f385fbd — the exact direct reference every
+# downstream repository declares in its pyproject. pip compares direct
+# references verbatim (full and short hashes of the same commit are NOT
+# equal to it), and pinning any other commit fails resolution.
+
+pulsar-contracts @ git+https://github.com/vanzeph/pulsar-contracts.git@f385fbd
+pulsar-core @ git+https://github.com/vanzeph/pulsar-core.git@433d9076d0879130c8611a12299e9531c348c130
+pulsar-data @ git+https://github.com/vanzeph/pulsar-data.git@b663c5cd42a5620900dfa368580c5bf2150db779
+pulsar-exec @ git+https://github.com/vanzeph/pulsar-exec.git@fc63437a82553500ee89ea23e8ce8d7acc8ea9e8
+pulsar-app @ git+https://github.com/vanzeph/pulsar-app.git@868dacdcfdf0f93f4d634816a4c83d4ce2340338
+pulsar-ui @ git+https://github.com/vanzeph/pulsar-ui.git@612c908c05166ff4b1f37bc1a9cc8edd23d41cb6
