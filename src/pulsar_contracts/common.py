@@ -62,9 +62,18 @@ class ContractModel(BaseModel):
 
 
 class Freq(enum.StrEnum):
-    """Bar frequencies understood by :class:`~pulsar_contracts.market_data.MarketDataPort`."""
+    """Bar frequencies understood by :class:`~pulsar_contracts.market_data.MarketDataPort`.
+
+    Minute members follow the storage granularity of the (free) minute
+    sources — baostock serves 5/15/30/60-minute bars — so those four are
+    first-class; ``1m`` stays reserved for a future tick-to-minute source.
+    """
 
     MINUTE = "1m"
+    MINUTE_5 = "5m"
+    MINUTE_15 = "15m"
+    MINUTE_30 = "30m"
+    MINUTE_60 = "60m"
     DAILY = "1d"
 
 

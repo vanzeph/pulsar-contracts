@@ -41,6 +41,14 @@ class TestEnums:
     def test_freq_values_match_lake_partitions(self) -> None:
         assert Freq.DAILY == "1d"
         assert Freq.MINUTE == "1m"
+        assert Freq.MINUTE_5 == "5m"
+        assert Freq.MINUTE_15 == "15m"
+        assert Freq.MINUTE_30 == "30m"
+        assert Freq.MINUTE_60 == "60m"
+
+    def test_freq_members_unique(self) -> None:
+        values = [freq.value for freq in Freq]
+        assert len(values) == len(set(values))
 
     def test_adjust_modes(self) -> None:
         assert {AdjustMode.RAW, AdjustMode.FORWARD, AdjustMode.BACKWARD} == {
