@@ -1,10 +1,16 @@
 # Pulsar release lockfile — full pinned environment for the six
 # repositories (see README.md in this directory).
 #
-# The pulsar-contracts line keeps the SHORT commit form declared by every
-# downstream pyproject: pip compares direct references verbatim, and a
-# full-hash rewrite of the same commit would conflict with the
-# transitive requirement during resolution.
+# Hash forms are load-bearing (pip compares direct references verbatim):
+# - the pulsar-contracts line keeps the SHORT commit 2e3e393 that every
+#   downstream pyproject (core/data/exec/app) declares; a full-hash
+#   rewrite of the same commit would conflict with those transitive
+#   requirements during resolution;
+# - the pulsar-core/data/exec lines keep the 40-char full hashes that
+#   pulsar-app's [e2e] extra declares, so constraining an
+#   `pulsar-app[e2e]` install to this family also resolves verbatim.
+# `pip freeze` rewrites the contracts line to its full hash — restore the
+# short form when regenerating this file.
 
 annotated-doc==0.0.5
 annotated-types==0.8.0
@@ -19,11 +25,11 @@ idna==3.20
 numpy==2.5.3
 opentelemetry-api==1.45.1
 pandas==3.0.6
-pulsar-app @ git+https://github.com/vanzeph/pulsar-app.git@bc0dc65fb8712549a82923e5eb0365561b208c2c
-pulsar-contracts @ git+https://github.com/vanzeph/pulsar-contracts.git@f385fbd
-pulsar-core @ git+https://github.com/vanzeph/pulsar-core.git@524dcc0cf4bf82a63dd6bcf803c4ce57178ccb32
-pulsar-data @ git+https://github.com/vanzeph/pulsar-data.git@702e4f86bf63c661eaa879311607ff689e4eb437
-pulsar-exec @ git+https://github.com/vanzeph/pulsar-exec.git@92ffb4856df991ca0bace06d132b5218a56ff542
+pulsar-app @ git+https://github.com/vanzeph/pulsar-app.git@85d41b2ff287640b3bd9d30c17e9d2e3833ed004
+pulsar-contracts @ git+https://github.com/vanzeph/pulsar-contracts.git@2e3e393
+pulsar-core @ git+https://github.com/vanzeph/pulsar-core.git@8e5620e0b86fd11a8ee872e60463bb8204fb7339
+pulsar-data @ git+https://github.com/vanzeph/pulsar-data.git@99e093d247030eacbb185fc53cf7880fe266cfc0
+pulsar-exec @ git+https://github.com/vanzeph/pulsar-exec.git@ab94f1ff81cabf9342d55e562e8f2c56f1408e6d
 pulsar-ui @ git+https://github.com/vanzeph/pulsar-ui.git@30131ad1ed6d38944a591c51e2a5417fabf40f7e
 pyarrow==25.0.1
 pydantic==2.13.5

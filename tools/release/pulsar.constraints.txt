@@ -6,17 +6,21 @@
 #     pip install -c pulsar.constraints.txt -e ...    # editable workspace
 # See README.md in this directory for conventions and re-locking.
 
-# NOTE: contracts is pinned at f385fbd — the exact direct reference every
-# downstream repository declares in its pyproject. pip compares direct
-# references verbatim (full and short hashes of the same commit are NOT
-# equal to it), and pinning any other commit fails resolution. Newer
-# contracts main-head commits that only add repo tooling (like 5d28b2f,
-# which added this directory) stay install-compatible with this anchor
-# because they change no package code.
+# NOTE on hash forms — pip compares direct references verbatim, so each
+# line below keeps the exact form the family declares for that package:
+# - pulsar-contracts is pinned at the SHORT commit 2e3e393, the exact
+#   direct reference every downstream repository (core/data/exec/app)
+#   declares in [project.dependencies]; pinning the same commit as a
+#   40-char hash would conflict with those transitive requirements.
+# - pulsar-core/data/exec keep the 40-char full hashes pulsar-app's [e2e]
+#   extra declares, so `pip install -c pulsar.constraints.txt
+#   "pulsar-app[e2e]"` also resolves verbatim.
+# - pulsar-app/pulsar-ui have no in-family dependents; they carry full
+#   hashes purely for explicitness.
 
-pulsar-contracts @ git+https://github.com/vanzeph/pulsar-contracts.git@f385fbd
-pulsar-core @ git+https://github.com/vanzeph/pulsar-core.git@524dcc0cf4bf82a63dd6bcf803c4ce57178ccb32
-pulsar-data @ git+https://github.com/vanzeph/pulsar-data.git@702e4f86bf63c661eaa879311607ff689e4eb437
-pulsar-exec @ git+https://github.com/vanzeph/pulsar-exec.git@92ffb4856df991ca0bace06d132b5218a56ff542
-pulsar-app @ git+https://github.com/vanzeph/pulsar-app.git@bc0dc65fb8712549a82923e5eb0365561b208c2c
+pulsar-contracts @ git+https://github.com/vanzeph/pulsar-contracts.git@2e3e393
+pulsar-core @ git+https://github.com/vanzeph/pulsar-core.git@8e5620e0b86fd11a8ee872e60463bb8204fb7339
+pulsar-data @ git+https://github.com/vanzeph/pulsar-data.git@99e093d247030eacbb185fc53cf7880fe266cfc0
+pulsar-exec @ git+https://github.com/vanzeph/pulsar-exec.git@ab94f1ff81cabf9342d55e562e8f2c56f1408e6d
+pulsar-app @ git+https://github.com/vanzeph/pulsar-app.git@85d41b2ff287640b3bd9d30c17e9d2e3833ed004
 pulsar-ui @ git+https://github.com/vanzeph/pulsar-ui.git@30131ad1ed6d38944a591c51e2a5417fabf40f7e

@@ -32,7 +32,7 @@ pulsar-contracts @ git+https://github.com/vanzeph/pulsar-contracts.git@<anchor>
 
 where `<anchor>` is either
 
-- a **commit hash** (7–40 hex chars, e.g. `f385fbd`), used while a repository
+- a **commit hash** (7–40 hex chars, e.g. `2e3e393`), used while a repository
   has not cut tags yet, or
 - a **release tag** (`vX.Y.Z`, e.g. `v0.1.0`) once the repository is tagged.
 
@@ -40,6 +40,16 @@ Floating references (no anchor, branch names, `HEAD`) are rejected by the
 topology gate (`tools/check_topology.py`, see below) because they are not
 reproducible. When a repository you depend on moves forward: bump the anchor,
 run that repository's test suite, then update the lockfiles here.
+
+The anchor's **hash form is load-bearing**: pip compares direct references
+verbatim, so a full-hash rewrite of a short-hash commit (or vice versa) is a
+different requirement and fails resolution even though it names the same
+commit. The lockfiles therefore pin each package with the exact form the
+family declares for it — today `pulsar-contracts` at the short `2e3e393`
+that core/data/exec/app declare, while `pulsar-core`/`pulsar-data`/
+`pulsar-exec` carry the 40-char hashes that pulsar-app's `[e2e]` extra
+declares. When re-locking, check every downstream pyproject and keep those
+forms identical.
 
 ## Reproducible install (clean room)
 
