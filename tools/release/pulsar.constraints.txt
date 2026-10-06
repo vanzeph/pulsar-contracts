@@ -9,11 +9,14 @@
 # NOTE: contracts is pinned at f385fbd — the exact direct reference every
 # downstream repository declares in its pyproject. pip compares direct
 # references verbatim (full and short hashes of the same commit are NOT
-# equal to it), and pinning any other commit fails resolution.
+# equal to it), and pinning any other commit fails resolution. Newer
+# contracts main-head commits that only add repo tooling (like 5d28b2f,
+# which added this directory) stay install-compatible with this anchor
+# because they change no package code.
 
 pulsar-contracts @ git+https://github.com/vanzeph/pulsar-contracts.git@f385fbd
-pulsar-core @ git+https://github.com/vanzeph/pulsar-core.git@433d9076d0879130c8611a12299e9531c348c130
-pulsar-data @ git+https://github.com/vanzeph/pulsar-data.git@b663c5cd42a5620900dfa368580c5bf2150db779
-pulsar-exec @ git+https://github.com/vanzeph/pulsar-exec.git@fc63437a82553500ee89ea23e8ce8d7acc8ea9e8
-pulsar-app @ git+https://github.com/vanzeph/pulsar-app.git@868dacdcfdf0f93f4d634816a4c83d4ce2340338
-pulsar-ui @ git+https://github.com/vanzeph/pulsar-ui.git@612c908c05166ff4b1f37bc1a9cc8edd23d41cb6
+pulsar-core @ git+https://github.com/vanzeph/pulsar-core.git@524dcc0cf4bf82a63dd6bcf803c4ce57178ccb32
+pulsar-data @ git+https://github.com/vanzeph/pulsar-data.git@702e4f86bf63c661eaa879311607ff689e4eb437
+pulsar-exec @ git+https://github.com/vanzeph/pulsar-exec.git@92ffb4856df991ca0bace06d132b5218a56ff542
+pulsar-app @ git+https://github.com/vanzeph/pulsar-app.git@bc0dc65fb8712549a82923e5eb0365561b208c2c
+pulsar-ui @ git+https://github.com/vanzeph/pulsar-ui.git@30131ad1ed6d38944a591c51e2a5417fabf40f7e

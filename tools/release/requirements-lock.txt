@@ -6,24 +6,34 @@
 # full-hash rewrite of the same commit would conflict with the
 # transitive requirement during resolution.
 
+annotated-doc==0.0.5
 annotated-types==0.8.0
+anyio==4.15.1
 certifi==2026.7.22
 charset-normalizer==3.5.2
+click==8.5.0
+duckdb==1.5.6
+fastapi==0.142.2
+h11==0.16.0
 idna==3.20
 numpy==2.5.3
+opentelemetry-api==1.45.1
 pandas==3.0.6
-pulsar-app @ git+https://github.com/vanzeph/pulsar-app.git@868dacdcfdf0f93f4d634816a4c83d4ce2340338
+pulsar-app @ git+https://github.com/vanzeph/pulsar-app.git@bc0dc65fb8712549a82923e5eb0365561b208c2c
 pulsar-contracts @ git+https://github.com/vanzeph/pulsar-contracts.git@f385fbd
-pulsar-core @ git+https://github.com/vanzeph/pulsar-core.git@433d9076d0879130c8611a12299e9531c348c130
-pulsar-data @ git+https://github.com/vanzeph/pulsar-data.git@b663c5cd42a5620900dfa368580c5bf2150db779
-pulsar-exec @ git+https://github.com/vanzeph/pulsar-exec.git@fc63437a82553500ee89ea23e8ce8d7acc8ea9e8
-pulsar-ui @ git+https://github.com/vanzeph/pulsar-ui.git@612c908c05166ff4b1f37bc1a9cc8edd23d41cb6
+pulsar-core @ git+https://github.com/vanzeph/pulsar-core.git@524dcc0cf4bf82a63dd6bcf803c4ce57178ccb32
+pulsar-data @ git+https://github.com/vanzeph/pulsar-data.git@702e4f86bf63c661eaa879311607ff689e4eb437
+pulsar-exec @ git+https://github.com/vanzeph/pulsar-exec.git@92ffb4856df991ca0bace06d132b5218a56ff542
+pulsar-ui @ git+https://github.com/vanzeph/pulsar-ui.git@30131ad1ed6d38944a591c51e2a5417fabf40f7e
 pyarrow==25.0.1
 pydantic==2.13.5
 pydantic_core==2.46.5
 python-dateutil==2.9.0.post0
+pytz==2026.5
 requests==2.34.2
 six==1.17.0
+starlette==1.7.0
 typing-inspection==0.4.4
 typing_extensions==4.16.0
 urllib3==2.8.0
+uvicorn==0.54.0
