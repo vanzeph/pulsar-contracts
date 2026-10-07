@@ -12,15 +12,17 @@
 #   direct reference every downstream repository (core/data/exec/app)
 #   declares in [project.dependencies]; pinning the same commit as a
 #   40-char hash would conflict with those transitive requirements.
-# - pulsar-core/data/exec keep the 40-char full hashes pulsar-app's [e2e]
-#   extra declares, so `pip install -c pulsar.constraints.txt
-#   "pulsar-app[e2e]"` also resolves verbatim.
+# - pulsar-core keeps the 40-char full hash pulsar-app's [project.dependencies]
+#   declares (base dependency since the unified store, STORE1), while
+#   pulsar-data/exec keep the 40-char hashes pulsar-app's [e2e] extra
+#   declares, so `pip install -c pulsar.constraints.txt "pulsar-app[e2e]"`
+#   also resolves verbatim.
 # - pulsar-app/pulsar-ui have no in-family dependents; they carry full
 #   hashes purely for explicitness.
 
 pulsar-contracts @ git+https://github.com/vanzeph/pulsar-contracts.git@2e3e393
-pulsar-core @ git+https://github.com/vanzeph/pulsar-core.git@8e5620e0b86fd11a8ee872e60463bb8204fb7339
-pulsar-data @ git+https://github.com/vanzeph/pulsar-data.git@99e093d247030eacbb185fc53cf7880fe266cfc0
+pulsar-core @ git+https://github.com/vanzeph/pulsar-core.git@4bbd30110cc774e396de266ac2c0bd0857628684
+pulsar-data @ git+https://github.com/vanzeph/pulsar-data.git@aeaaadee0eb52dc7995ab8f7c037588b7bb6bd8f
 pulsar-exec @ git+https://github.com/vanzeph/pulsar-exec.git@ab94f1ff81cabf9342d55e562e8f2c56f1408e6d
-pulsar-app @ git+https://github.com/vanzeph/pulsar-app.git@85d41b2ff287640b3bd9d30c17e9d2e3833ed004
+pulsar-app @ git+https://github.com/vanzeph/pulsar-app.git@b948f8f9223fff3a48c9538c684ab40478cdcfdf
 pulsar-ui @ git+https://github.com/vanzeph/pulsar-ui.git@30131ad1ed6d38944a591c51e2a5417fabf40f7e

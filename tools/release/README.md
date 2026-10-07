@@ -46,10 +46,13 @@ verbatim, so a full-hash rewrite of a short-hash commit (or vice versa) is a
 different requirement and fails resolution even though it names the same
 commit. The lockfiles therefore pin each package with the exact form the
 family declares for it — today `pulsar-contracts` at the short `2e3e393`
-that core/data/exec/app declare, while `pulsar-core`/`pulsar-data`/
-`pulsar-exec` carry the 40-char hashes that pulsar-app's `[e2e]` extra
-declares. When re-locking, check every downstream pyproject and keep those
-forms identical.
+that core/data/exec/app declare; `pulsar-core` at the 40-char hash that
+pulsar-app's `[project.dependencies]` declares (its base dependency since
+the unified store, STORE1); `pulsar-data`/`pulsar-exec` at the 40-char
+hashes that pulsar-app's `[e2e]` extra declares; and `pulsar-app`/
+`pulsar-ui` (no in-family dependents) at full hashes purely for
+explicitness. When re-locking, check every downstream pyproject and keep
+those forms identical.
 
 ## Reproducible install (clean room)
 
